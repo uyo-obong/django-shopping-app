@@ -1,0 +1,40 @@
+{% extends 'master.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block contents %}
+<div class="container">
+    <div class="row offset-lg-4">
+        <div class="col-md-6">
+            <h5>SHIPPING DETAILS</h5>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ form.first_name|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form.last_name|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="form-group">
+                     {{ form.phone_no|as_crispy_field }}
+                </div>
+
+
+                <div class="form-group">
+                     {{ form.address|as_crispy_field }}
+                </div>
+                <div class="form-group">
+                    {{ form.state|as_crispy_field }}
+                </div>
+                <div class="form-group">
+                     {{ form.city|as_crispy_field }}
+                </div>
+                <button type="submit" class="btn offset-lg-3 btn-primary">Save and Continue</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

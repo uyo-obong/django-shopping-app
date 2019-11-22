@@ -1,0 +1,49 @@
+{% extends 'master.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block contents %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mt-5">
+
+            <div class="card">
+                <header class="card-header">
+                    <a href="{% url 'login.user' %}" class="float-right btn btn-outline-primary mt-1">Log in</a>
+                    <h4 class="card-title mt-2">Sign up</h4>
+                    <!-- </header> -->
+                    <article class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                {{ form.username|as_crispy_field }}
+                            </div> <!-- form-group end.// -->
+                            <div class="form-row">
+                                <div class="col form-group">
+                                    {{ form.first_name|as_crispy_field }}
+                                </div> <!-- form-group end.// -->
+                                <div class="col form-group">
+                                     {{ form.last_name|as_crispy_field }}
+                                </div> <!-- form-group end.// -->
+                            </div> <!-- form-row end.// -->
+                            <div class="form-group">
+                                {{ form.email|as_crispy_field }}
+                                <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            </div> <!-- form-group end.// -->
+
+                            <div class="form-group">
+                                 {{ form.password|as_crispy_field }}
+                            </div> <!-- form-group end.// -->
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block"> Register  </button>
+                            </div> <!-- form-group// -->
+
+                        </form>
+                    </article> <!-- card-body end .// -->
+                    <div class="border-top card-body text-center">Have an account? <a href="{% url 'login.user' %}">Log In</a></div>
+            </div> <!-- card.// -->
+
+        </div>
+    </div>
+</div>
+{% endblock %}

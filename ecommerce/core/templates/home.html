@@ -1,0 +1,59 @@
+{% extends 'master.html' %}
+
+{% load static %}
+
+{% block contents %}
+<section id="head">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-6">
+                <h1 class="text-light text-right headerText">mEGA<br> sTORE</h1>
+                <p class="text-light text-right">Dealers of all kind of Electronics, laptop/Desktop computers, mobile phones, furnitures, all kinds of Men and Ladies wears</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="body">
+    <div class="container">
+        <div class="row">
+             {% for product in products %}
+            <div class="col-md-4 mt-5">
+                <div class="card">
+                    <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
+                    <div class="card-body">
+                        <p class="card-title text-center"><a href="{% url 'category.core' product.category.slug %}">{{ product.title }}</a></p>
+<!--                        <p class="card-text text-center">{{ product.description|slice:30 }}</p>-->
+                        <a href="{% url 'user.details' product.pk %}" class="btn btn-primary">Order</a>
+                        <p class="price text-right"><strike>₦{{ product.old_price }}</strike></p><br>
+                        <p class="price text-right">₦{{ product.new_price }}</p>
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+
+</section>
+<section id="pagin">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

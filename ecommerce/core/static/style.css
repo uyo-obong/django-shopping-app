@@ -1,0 +1,61 @@
+body{
+    overflow-x: hidden;
+}
+#head{
+    background: linear-gradient(rgba(0,0,34,0.56),rgba(0,0,34,0.56)), url('img/black2.jpg');
+    background-size: cover;
+    height: 600px;
+    background-position:  center;
+    background-attachment: fixed;
+}
+.headerText{
+    padding-top: 190px;
+    font-size: 60px !important;
+
+}
+@media(max-width:768px){
+    #head{
+        height: 400px  !important;
+    }
+}
+@media(max-width:425px){
+    .headerText{
+        padding-top: 90px !important;
+        text-align: center !important;
+    }
+}
+.price{
+    margin-left: 200px;
+    margin-top: -30px;
+}
+#pagin{
+    margin-top: 50px;
+}
+.card img{
+    width: 300px !important;
+    height: 200px !important;
+    align-items: center !important;
+    align-content: center !important;
+    justify-content: center !important;
+    justify-items: center !important;
+}
+.card{
+    align-items: center !important;
+    align-content: center !important;
+    justify-content: center !important;
+    justify-items: center !important;
+}
+.logInPart{
+    height: 525px !important;
+}
+.mov{
+    margin-top: 70px !important;
+}
+.cardmove{
+    margin-top: 100px !important;
+}
+.line hr{
+    width: 250px !important;
+    
+
+}
