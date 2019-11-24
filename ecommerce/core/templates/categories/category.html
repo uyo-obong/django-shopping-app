@@ -24,9 +24,11 @@
                     <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-title text-center"><a href="{% url 'category.core' product.category.slug%}">{{ product.title }}</a></p>
-<!--                        <p class="card-text text-center">features: 4000-Lumen Full HD, 4000 lumens of brightness</p>-->
-                        <a href="#" class="btn btn-primary">Buy</a>
+                        <!--                        <p class="card-text text-center">features: 4000-Lumen Full HD, 4000 lumens of brightness</p>-->
+                        <a href="{% url 'user.details' product.pk %}" class="btn btn-primary">Order</a>
+                        {% if product.old_price %}
                         <p class="price text-right"><strike>₦{{ product.old_price }}</strike></p>&nbsp;
+                        {% endif %}
                         <p class="price text-right">₦{{ product.new_price }}</p>
                     </div>
                 </div>
@@ -42,17 +44,28 @@
         <div class="row">
             <div class="col-md-12">
                 <nav aria-label="Page navigation example">
+                    {% if is_paginated %}
                     <ul class="pagination justify-content-center">
-                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        {% if page_obj.has_previous %}
+                        <li class="page-item"><a class="page-link" href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+                        {% else %}
+                        <li class="page-item page-link disabled"><span>&laquo;</span></li>
+                        {% endif %}
+                        {% for i in paginator.page_range %}
+                        {% if page_obj.number == i %}
+                        <li style="background: #007bff; color: #fff" class="page-item page-link active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                        {% else %}
+                        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                        <li class="page-item"><a class="page-link" href="?page={{ users.next_page_number }}">&raquo;</a></li>
+                        {% else %}
+                        <li class="page-item page-link disabled"><span>&raquo;</span></li>
+                        {% endif %}
                     </ul>
+                    {% endif %}
                 </nav>
-
             </div>
         </div>
     </div>

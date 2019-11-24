@@ -7,8 +7,8 @@ class Product(models.Model):
     author = models.ForeignKey(User, on_delete=True, default=1)
     title = models.CharField(max_length=200)
     slug = AutoSlugField(populate_from='title')
-    old_price = models.FloatField(default=0.00)
-    new_price = models.FloatField(default=0.00)
+    old_price = models.CharField(max_length=9000, blank=True)
+    new_price = models.CharField(max_length=9000)
     image = models.ImageField(upload_to='product_photos')
     description = models.TextField(max_length=None)
     category = models.ForeignKey('Category', on_delete=True, null=True, blank=True)
@@ -22,7 +22,7 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
-
+    
 
 class Category(models.Model):
     name = models.CharField(max_length=100)

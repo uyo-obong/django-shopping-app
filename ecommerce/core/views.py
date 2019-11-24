@@ -1,12 +1,23 @@
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, get_object_or_404
 from .models import Product, Category
 from django.views import generic as g
-import pdb
 
 
 def home(request):
     products = Product.objects.all()
     categories = Category.objects.all()
+
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(products, 6)
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
+
     context = {
         'products': products,
         'categories': categories
@@ -16,6 +27,7 @@ def home(request):
 
 class ListViewCategory(g.ListView):
     model = Product
+    paginate_by = 6
     template_name = 'categories/category.html'
 
     def get_queryset(self):

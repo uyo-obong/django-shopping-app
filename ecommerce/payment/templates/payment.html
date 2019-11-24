@@ -1,6 +1,7 @@
 {% extends 'master.html' %}
 
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block contents %}
 <div class="container">
@@ -12,26 +13,26 @@
                         <img class="img-fluid payment-card "  src="{% static 'cards/pay-visa-el.png' %}" width="65" height="38">
                         <img class="img-fluid payment-card" src="{% static 'cards/pay-mastercard.png' %}" width="65" height="38">
                         <img class="img-fluid payment-card" src="{% static 'cards/pay-american-ex.png' %}" width="65" height="38" > </p>
-                    <p class="alert alert-success">Some text success or error</p>
 
-                    <form role="form">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <p  class="alert alert-success {{ message.tags }}">{{ message }}</p>
+                    {% endfor %}
+                    {% endif %}
+
+                    <form method="POST" role="form">
+                        {% csrf_token %}
                         <div class="form-group">
                             <label for="username">Full name (on the card)</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fa fa-user"></i></span>
-                                </div>
-                                <input type="text" class="form-control" name="username" placeholder="" required="">
+                            <div class="form-group">
+                                {{ form.card_name|as_crispy_field }}
                             </div> <!-- input-group.// -->
                         </div> <!-- form-group.// -->
 
                         <div class="form-group">
                             <label for="cardNumber">Card number</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fa fa-credit-card"></i></span>
-                                </div>
-                                <input type="text" class="form-control" name="cardNumber" placeholder="">
+                            <div class="form-group">
+                                {{ form.card_number|as_crispy_field }}
                             </div> <!-- input-group.// -->
                         </div> <!-- form-group.// -->
 
@@ -39,30 +40,33 @@
                             <div class="col-sm-8">
                                 <div class="form-group">
                                     <label><span class="hidden-xs">Expiration</span> </label>
-                                    <div class="form-inline">
-                                        <select class="form-control" style="width:45%">
-                                            <option>MM</option>
-                                            <option>01 - Janiary</option>
-                                            <option>02 - February</option>
-                                            <option>03 - February</option>
-                                        </select>
-                                        <span style="width:10%; text-align: center"> / </span>
-                                        <select class="form-control" style="width:45%">
-                                            <option>YY</option>
-                                            <option>2018</option>
-                                            <option>2019</option>
-                                        </select>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            {{ form.expiring_month|as_crispy_field }}
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            {{ form.expiring_year|as_crispy_field }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label data-toggle="tooltip" title="" data-original-title="3 digits code on back side of the card">CVV <i class="fa fa-question-circle"></i></label>
-                                    <input class="form-control" required="" type="text">
+                                    {{ form.card_cvv|as_crispy_field }}
                                 </div> <!-- form-group.// -->
                             </div>
                         </div> <!-- row.// -->
-                        <button class="subscribe btn btn-primary btn-block" type="button"> Confirm  </button>
+                        {% if messages %}
+                        {% for message in messages %}
+                        <a class="subscribe btn btn-primary btn-block" href="/"> Go Back  </a>
+                        {% endfor %}
+                        {% else %}
+                        <button class="subscribe btn btn-primary btn-block" type="submit"> Confirm  </button>
+                        {% endif %}
+
+
                     </form>
                 </div> <!-- card-body.// -->
             </article> <!-- card.// -->

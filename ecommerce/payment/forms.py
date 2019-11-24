@@ -1,6 +1,11 @@
+
 from django import forms
+
 from .models import Payment
-from django.contrib.auth.models import User
+
+import getpass
+
+print(getpass.getuser())
 
 
 class PaymentForm(forms.ModelForm):
@@ -18,11 +23,11 @@ class PaymentForm(forms.ModelForm):
 
 class CardForm(forms.ModelForm):
     card_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Card Name'}), label='')
-    Card_number = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Card Number'}), label='')
+    card_number = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Card Number'}), label='')
     expiring_month = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Month'}), label='')
     expiring_year = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Year'}), label='')
     card_cvv = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Cvv'}), label='')
 
     class Meta:
         model = Payment
-        fields = ['card_name', 'Card_number', 'expiring_month', 'expiring_year', 'card_cvv']
+        fields = ['card_name', 'card_number', 'expiring_month', 'expiring_year', 'card_cvv']
