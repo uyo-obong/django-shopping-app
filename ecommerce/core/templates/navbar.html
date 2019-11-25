@@ -15,10 +15,10 @@
                     </a>
 
 
-                    <div class="dropdown-menu" >
-                         {% for category in categories %}
-                        <a class="dropdown-item" href="{{ category.slug }}">{{ category.name }}</a>
-                          {% endfor %}
+                    <div class="dropdown-menu">
+                        {% for category in categories %}
+                        <a class="dropdown-item" href="/view/{{ category.slug }}">{{ category.name }}</a>
+                        {% endfor %}
                     </div>
 
 
@@ -27,7 +27,7 @@
                 {% if user.is_authenticated %}
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                       Hi! {{ user.username }}
+                        Hi! {{ user.username }}
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="{% url 'logout.user' %}">Logout</a>
