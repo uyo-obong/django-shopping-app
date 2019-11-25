@@ -7,3 +7,4 @@ class ExtraContextMixin(object):
         context.update({
             "categories": Category.objects.all()
         })
+        return context

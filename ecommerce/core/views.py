@@ -27,7 +27,7 @@ def home(request):
     return render(request, 'home.html', context)
 
 
-class ListViewCategory(g.ListView):
+class ListViewCategory(ExtraContextMixin, g.ListView):
     model = Product
     paginate_by = 6
     template_name = 'categories/category.html'
