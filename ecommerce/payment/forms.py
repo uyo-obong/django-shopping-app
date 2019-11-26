@@ -26,7 +26,7 @@ class CardForm(forms.ModelForm):
     card_number = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Card Number'}), label='')
     expiring_month = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Month'}), label='')
     expiring_year = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Year'}), label='')
-    card_cvv = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Cvv'}), label='')
+    card_cvv = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'cvv'}), label='')
 
     class Meta:
         model = Payment

@@ -1,10 +1,13 @@
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
+
+from ecommerce.core.models import Category
 from .forms import RegisterForm, ContactForm
 
 
 def contact_us(request):
     form = ContactForm()
+    categories = Category.objects.all()
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -15,7 +18,8 @@ def contact_us(request):
             form = ContactForm()
 
     context = {
-        "form": form
+        "form": form,
+        "categories": categories
     }
     return render(request, "users/contact.html", context)
 
