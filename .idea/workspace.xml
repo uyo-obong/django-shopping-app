@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1bf4596c-db95-4ed5-ab31-2cf944bcba60" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce/core/static/img/black2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce/core/static/img/black2.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ecommerce/core/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce/core/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce/payment/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce/payment/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce/user/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
