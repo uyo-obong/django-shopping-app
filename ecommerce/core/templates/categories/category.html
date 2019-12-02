@@ -24,7 +24,7 @@
                     <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-title text-center"><a href="{% url 'category.core' product.category.slug%}">{{ product.title }}</a></p>
-                        <!--                        <p class="card-text text-center">features: 4000-Lumen Full HD, 4000 lumens of brightness</p>-->
+                        <p class="card-text text-center">{{ product.description|slice:100 }}...</p>
                         <a href="{% url 'user.details' product.pk %}" class="btn btn-primary">Order</a>
                         {% if product.old_price %}
                         <p class="price text-right"><strike>₦{{ product.old_price }}</strike></p>&nbsp;
